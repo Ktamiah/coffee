@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Café Classico – Cold‑Brew & More</title>
+
+    <!-- Boxicons & Remix Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" />
+
+    <!-- Google Font: Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+
+    <!-- Core Styles -->
+    <style>
+      :root {
+        --accent: #c19a6b;
+        --dark: #1f1f1f;
+        --light: #faf8f5;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Roboto", sans-serif;
+      }
+
+      body {
+        background: var(--light);
+        color: var(--dark);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* Header */
+      header {
+        width: 100%;
+        padding: 1.2rem 6%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: var(--light);
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+      }
+      .logo img {
+        width: 140px;
+      }
+      .navlist {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+      }
+      .navlist li a {
+        position: relative;
+        font-weight: 500;
+      }
+      .navlist li a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 0%;
+        height: 2px;
+        background: var(--accent);
+        transition: width 0.3s;
+      }
+      .navlist li a:hover::after {
+        width: 100%;
+      }
+      .nav-btn {
+        padding: 0.5rem 1.5rem;
+        border: 2px solid var(--accent);
+        border-radius: 30px;
+        font-weight: 500;
+        transition: background 0.3s, color 0.3s;
+      }
+      .nav-btn:hover {
+        background: var(--accent);
+        color: #fff;
+      }
+
+      /* Hero */
+      .hero {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        align-items: center;
+        padding: 4rem 6%;
+        gap: 4rem;
+      }
+      .hero-text h5 {
+        color: var(--accent);
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+      }
+      .hero-text h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 900;
+        margin-bottom: 1rem;
+      }
+      .hero-text p {
+        max-width: 480px;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+      }
+      .main-hero {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        align-items: center;
+      }
+      .btn {
+        background: var(--accent);
+        color: #fff;
+        padding: 0.75rem 2.5rem;
+        border-radius: 40px;
+        font-weight: 500;
+        transition: opacity 0.3s;
+      }
+      .btn:hover {
+        opacity: 0.8;
+      }
+      .price {
+        border: 2px solid var(--accent);
+        padding: 0.75rem 1.75rem;
+        border-radius: 20px;
+        text-align: center;
+      }
+      .price h4 {
+        font-size: 1.25rem;
+        margin-bottom: 0.25rem;
+      }
+      .price span {
+        font-size: 0.85rem;
+        color: #666;
+      }
+      .hero-image img {
+        width: 100%;
+        max-width: 420px;
+        filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
+      }
+
+      /* Coffee Menu */
+      .menu {
+        background: var(--dark);
+        color: #fff;
+        padding: 4rem 6%;
+        text-align: center;
+      }
+      .menu h2 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+      }
+      .menu p.sub {
+        opacity: 0.7;
+        margin-bottom: 3rem;
+      }
+      .coffee-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 2rem;
+      }
+      .coffee-card {
+        background: #2c2c2c;
+        border-radius: 18px;
+        padding: 2rem 1.5rem;
+        transition: transform 0.4s, box-shadow 0.4s;
+      }
+      .coffee-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+      }
+      .coffee-card img {
+        width: 80px;
+        margin-bottom: 1rem;
+      }
+      .coffee-card h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.35rem;
+      }
+      .coffee-card span {
+        font-weight: 700;
+        color: var(--accent);
+      }
+      /* Events */
+.events {
+  background: var(--light);
+  padding: 4rem 6%;
+  text-align: center;
+}
+.events h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.events .sub {
+  opacity: 0.7;
+  margin-bottom: 3rem;
+}
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+.event-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.event-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+.event-card .date {
+  font-weight: 500;
+  color: var(--accent);
+  margin: 0.5rem 0 1rem;
+}
+.event-card .desc {
+  opacity: 0.85;
+  line-height: 1.5;
+}
+/* Contact */
+.contact {
+  background: var(--dark);
+  color: #fff;
+  padding: 4rem 6%;
+  text-align: center;
+}
+.contact h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.contact .sub {
+  opacity: 0.8;
+  margin-bottom: 2.5rem;
+}
+.contact-form {
+  max-width: 700px;
+  margin: 0 auto 2.5rem;
+  display: grid;
+  gap: 1rem;
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  border: none;
+  border-radius: 14px;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 2px solid var(--accent);
+}
+.contact-info p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
+}
+.ri-map-pin-line,
+.ri-phone-line,
+.ri-mail-line {
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+
+      /* Footer */
+      footer {
+        margin-top: auto;
+        background: var(--light);
+        padding: 2rem 6%;
+        text-align: center;
+        font-size: 0.9rem;
+        color: #777;
+      }
+
+      /* Responsive Nav */
+      #menu-icon {
+        font-size: 2rem;
+        cursor: pointer;
+        display: none;
+      }
+      @media (max-width: 800px) {
+        .navlist {
+          position: fixed;
+          left: -100%;
+          top: 72px;
+          width: 100%;
+          height: calc(100vh - 72px);
+          background: var(--light);
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          transition: left 0.4s;
+        }
+        .navlist.active {
+          left: 0;
+        }
+        #menu-icon {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <a href="#" class="logo"><img src="img/logo.png" alt="Café logo" /></a>
+      <ul class="navlist" id="nav">
+        <li><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="right-content">
+        <a href="#" class="nav-btn">Sign In</a>
+        <i class="bx bx-menu" id="menu-icon"></i>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="about">
+      <div class="hero-text">
+        <h5>#Coffee for hot days</h5>
+        <h1>Cold Brew Perfection</h1>
+        <p>
+          Welcome to Café Classico, a community of coffee lovers who believe the
+          best brews are slow‑crafted and served ice‑cold.
+        </p>
+        <div class="main-hero">
+          <a href="#menu" class="btn">Order Now</a>
+          <a class="price">
+            <h4>Ksh 200‑300</h4>
+            <p>per cup</p>
+            <span>Regular Price</span>
+          </a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="img/hero.png" alt="Cold brew glass" />
+      </div>
+    </section>
+
+    <!-- Menu -->
+    <section class="menu" id="menu">
+      <h2>Our Classics</h2>
+      <p class="sub">Brewed fresh, served chilled — every single day.</p>
+      <div class="coffee-grid">
+        <!-- Coffee Items -->
+        <div class="coffee-card">
+          <img src="img/espresso.jpg" alt="Espresso" />
+          <h3>Espresso</h3>
+          <p>Bold & intense shot topped with silky crema.</p>
+          <span>Ksh 220</span>
+        </div>
+        <div class="coffee-card">
+          <img src="img/latte.jpg" alt="Latte" />
+          <h3>Latte</h3>
+          <p>Smooth espresso blended with frothy milk.</p>
+          <span>Ksh 260</span>
+        </div>
+        <div class="coffee-card">
+          <img src="img/cappuccino.jpg" alt="Cappuccino" />
+          <h3>Cappuccino</h3>
+          <p>Creamy foam, balanced espresso & cocoa dusting.</p>
+          <span>Ksh 250</span>
+        </div>
+        <div class="coffee-card">
+          <img src="img/coldbrew.jpg" alt="Cold Brew" />
+          <h3>Cold Brew</h3>
+          <p>18‑hr steep for a smooth, low‑acid finish.</p>
+          <span>Ksh 270</span>
+        </div>
+        <div class="coffee-card">
+          <img src="img/mocha.jpg" alt="Mocha" />
+          <h3>Mocha</h3>
+          <p>Rich chocolate meets robust espresso.</p>
+          <span>Ksh 280</span>
+        </div>
+        <div class="coffee-card">
+          <img src="img/seasonal.jpg" alt="Seasonal Special" />
+          <h3>Seasonal Special</h3>
+          <p>Ask our barista about today’s limited brew.</p>
+          <span>Varies</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Events -->
+<section class="events" id="events">
+  <h2>Upcoming Events</h2>
+  <p class="sub">Join us for brews, beats, and good vibes.</p>
+
+  <div class="event-grid">
+    <article class="event-card">
+      <h3>Latte-Art Workshop</h3>
+      <p class="date">Sat, 24 May 2025 • 10 AM – 12 PM</p>
+      <p class="desc">
+        Learn the secrets of pouring perfect rosettas with our head barista.
+      </p>
+    </article>
+
+    <article class="event-card">
+      <h3>Open-Mid Night</h3>
+      <p class="date">Fri, 6 Jun 2025 • 7 PM – 9 PM</p>
+      <p class="desc">
+        Poetry, acoustic sets, stand-up—sign up and share your craft.
+      </p>
+    </article>
+
+    <article class="event-card">
+      <h3>Cold-Brew Masterclass</h3>
+      <p class="date">Sat, 21 Jun 2025 • 3 PM – 4 PM</p>
+      <p class="desc">
+        Dive deep into grind size, brew ratios, and tasting notes.
+      </p>
+    </article>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+  <h2>Let’s Talk</h2>
+  <p class="sub">Questions, bookings, or feedback? Drop us a message.</p>
+
+  <form class="contact-form">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Email Address" required />
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit" class="btn">Send Message</button>
+  </form>
+
+  <div class="contact-info">
+    <p><i class="ri-map-pin-line"></i> 123 Brew Lane, Nairobi</p>
+    <p><i class="ri-phone-line"></i> +254 748 042 102</p>
+    <p><i class="ri-mail-line"></i> hello@cafeclassico.co.ke</p>
+  </div>
+</section>
+
+    <!-- Footer -->
+    <footer>
+      © 2025 KTA Café Classico. Crafted with love & caffeine.
+    </footer>
+
+    <!-- Script for mobile nav toggle -->
+    <script>
+      const menuIcon = document.getElementById("menu-icon");
+      const nav = document.getElementById("nav");
+      menuIcon.onclick = () => {
+        nav.classList.toggle("active");
+        menuIcon.classList.toggle("bx-x");
+      };
+    </script>
+  </body>
+</html>
